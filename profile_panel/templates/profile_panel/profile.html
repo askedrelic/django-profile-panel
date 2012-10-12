@@ -1,0 +1,27 @@
+{% load i18n %}
+{% if stats %}
+Function calls: {{ stats.total_calls }}
+{% endif %}
+
+<table>
+	<thead>
+		<tr>
+			<th>cc</th>
+			<th>Calls</th>
+			<th>Total Time</th>
+			<th>Cumulative</th>
+			<th>Callers</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for l in list %}
+			{# cc, nc, tt, ct, callers #}
+			<tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+				{% for x in l %}
+					<td>{{ x }}</td>
+				{% endfor %}
+
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
